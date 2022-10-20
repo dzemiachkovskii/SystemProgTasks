@@ -1,0 +1,46 @@
+#include <iostream>
+#include <list>
+
+int main()
+{
+	setlocale(LC_ALL, "Rus");
+	srand(time(0));
+	int arr[10][10];
+	std::list<int> even;
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			arr[i][j] = rand() % sizeof(arr) + 1;
+		}
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if ((arr[i][j] & 1) == 0) {
+				even.push_back(arr[i][j]);
+			}
+		}
+	}
+
+	for (int i = 0; i < 10; i++)
+	{
+		std::cout << "| ";
+		for (int j = 0; j < 10; j++)
+		{
+			std::string space = arr[i][j] >= 100 ? " | " : (arr[i][j] >= 10 ? "  | " : "   | ");
+			std::cout << arr[i][j] << space;
+		}
+		std::cout << std::endl;
+	}
+
+	std::cout << std::endl << std::endl;
+
+	std::cout << "Even:" << std::endl;
+	for (int dig : even) {
+		std::cout << dig << std::endl;
+	}
+}
